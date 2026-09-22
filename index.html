@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alima &amp; Ashif | Royal Wedding Invitation</title>
+  <meta name="description" content="You are cordially invited to celebrate the Nikah and Wedding Ceremony of Alima &amp; Ashif on Sunday, November 08, 2026 at Green Valley Convention Centre, Adoor.">
+  <meta name="theme-color" content="#6E2434">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Alima &amp; Ashif Wedding Invitation">
+  <meta property="og:description" content="Join us in celebrating our wedding day on Sunday, November 08, 2026 at Green Valley Convention Centre, Adoor.">
+  <meta property="og:image" content="assets/images/couple_illustration.png">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon Monogram -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💍</text></svg>">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Ambient Falling Petals Canvas -->
+  <canvas id="petals-canvas" aria-hidden="true"></canvas>
+
+  <!-- ==========================================================================
+       Curtain / Envelope Opening Reveal
+       ========================================================================== -->
+  <div id="curtain-overlay" role="dialog" aria-modal="true" aria-label="Tap to open the wedding invitation">
+    <div class="curtain-top-rail" aria-hidden="true"></div>
+
+    <!-- Left Velvet Ribbed Door -->
+    <div class="curtain-door left" aria-hidden="true">
+      <div class="curtain-handle"></div>
+    </div>
+
+    <!-- Right Velvet Ribbed Door -->
+    <div class="curtain-door right" aria-hidden="true">
+      <div class="curtain-handle"></div>
+    </div>
+
+    <!-- Center Card -->
+    <div class="curtain-card-container">
+      <div class="curtain-monogram-emblem" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+      </div>
+
+      <p class="curtain-eyebrow">You're Cordially Invited</p>
+      <h2 class="curtain-names">
+        Alima
+        <span class="curtain-ampersand">&amp;</span>
+        Ashif
+      </h2>
+      <p class="curtain-invitation-sub">Request the honour of your gracious presence &amp; prayers</p>
+
+      <button id="open-invitation-btn" type="button" class="btn-gold-shimmer" aria-label="Open wedding invitation">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/>
+        </svg>
+        <span>Open Invitation</span>
+      </button>
+
+      <p class="curtain-tap-tip">Tap to begin celebration</p>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       Floating Music Controller
+       ========================================================================== -->
+  <aside id="floating-music" aria-label="Music controller">
+    <button id="music-toggle-btn" type="button" aria-label="Toggle background music">
+      <div id="music-waves" class="music-equalizer" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <span id="music-status">Play Music</span>
+    </button>
+  </aside>
+
+  <!-- ==========================================================================
+       Sticky Header
+       ========================================================================== -->
+  <header class="luxury-header">
+    <a href="#hero" class="header-monogram" aria-label="Alima and Ashif Home">
+      A<span>&amp;</span>A
+    </a>
+
+    <nav class="desktop-nav" aria-label="Primary Navigation">
+      <a href="#hero" class="active">Home</a>
+      <a href="#countdown">Countdown</a>
+      <a href="#events">Nikah</a>
+      <a href="#family">Family</a>
+      <a href="#venue">Venue</a>
+      <a href="#rsvp">RSVP</a>
+      <a href="#original-cards">Cards</a>
+    </nav>
+
+    <a href="#rsvp" class="btn-gold-shimmer header-action-btn">RSVP Now</a>
+  </header>
+
+  <main>
+    <!-- ==========================================================================
+         Hero Section
+         ========================================================================== -->
+    <section id="hero">
+      <!-- Bismillah Inscription -->
+      <div class="bismillah-block">
+        <p class="arabic-calligraphy" lang="ar">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
+        <p class="arabic-translation">In the name of Allah, the Most Gracious, the Most Merciful</p>
+      </div>
+
+      <div class="hero-grid">
+        <!-- Text Invitation Column -->
+        <div class="hero-card">
+          <span class="hero-eyebrow">Together with their families</span>
+
+          <div class="hero-parents-note">
+            <p>We, <strong>Abdul Rashi A and Shemy B</strong></p>
+            <p class="hero-parents-address">Varmathy, Nooranad, Alappuzha</p>
+            <p style="margin-top: 0.5rem; font-style: italic;">
+              request the gracious presence and prayers of you and your family at the wedding of our beloved daughter
+            </p>
+          </div>
+
+          <h1 class="hero-names-title">
+            <span class="bride-name">Alima</span>
+            <span class="and-script">&amp;</span>
+            <span class="groom-name">Ashif</span>
+          </h1>
+
+          <p class="hero-invitation-message">
+            JOYFULLY INVITE YOU TO JOIN THEM IN CELEBRATING THEIR WEDDING DAY
+          </p>
+
+          <div class="diamond-divider" aria-hidden="true">
+            <span class="line"></span>
+            <span class="diamond"></span>
+            <span class="line rev"></span>
+          </div>
+
+          <p class="hero-date-highlight">Sunday, November 08, 2026</p>
+        </div>
+
+        <!-- Couple Arched Portrait Frame -->
+        <div class="hero-portrait-wrapper">
+          <div class="portrait-arched-frame" title="Alima &amp; Ashif">
+            <img src="assets/images/couple_illustration.png" alt="Illustrated Portrait of Alima and Ashif" loading="eager">
+            <div class="portrait-badge-overlay" aria-hidden="true">
+              <span>Alima &amp; Ashif</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Countdown Section
+         ========================================================================== -->
+    <section id="countdown">
+      <div class="countdown-container">
+        <p class="countdown-subscript">Counting down to Forever</p>
+        <h2 id="countdown-title" class="countdown-main-title">Married</h2>
+
+        <div class="diamond-divider" aria-hidden="true">
+          <span class="line" style="background: linear-gradient(90deg, transparent, rgba(216,190,132,0.9));"></span>
+          <span style="color: var(--color-gold); font-size: 14px;">✦</span>
+          <span class="line rev" style="background: linear-gradient(-90deg, transparent, rgba(216,190,132,0.9));"></span>
+        </div>
+
+        <div class="countdown-grid" role="timer" aria-live="polite">
+          <div class="countdown-card">
+            <span id="cd-days" class="number">--</span>
+            <span class="card-divider" aria-hidden="true"></span>
+            <span class="label">Days</span>
+          </div>
+
+          <div class="countdown-card">
+            <span id="cd-hours" class="number">--</span>
+            <span class="card-divider" aria-hidden="true"></span>
+            <span class="label">Hours</span>
+          </div>
+
+          <div class="countdown-card">
+            <span id="cd-minutes" class="number">--</span>
+            <span class="card-divider" aria-hidden="true"></span>
+            <span class="label">Minutes</span>
+          </div>
+
+          <div class="countdown-card">
+            <span id="cd-seconds" class="number">--</span>
+            <span class="card-divider" aria-hidden="true"></span>
+            <span class="label">Seconds</span>
+          </div>
+        </div>
+
+        <p class="countdown-footer-date">Until Sunday, November 08, 2026 • 11:30 AM</p>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Events & Nikah Section
+         ========================================================================== -->
+    <section id="events">
+      <div class="section-header">
+        <span class="section-eyebrow">The Details</span>
+        <h2 class="section-title">Order of Events</h2>
+        <div class="diamond-divider" aria-hidden="true">
+          <span class="line"></span>
+          <span class="diamond"></span>
+          <span class="line rev"></span>
+        </div>
+      </div>
+
+      <!-- 3 Key Badges directly from User Invitation Card -->
+      <div class="details-badges-grid">
+        <!-- Date Badge -->
+        <div class="detail-badge-card">
+          <div class="detail-badge-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+            </svg>
+          </div>
+          <p class="detail-badge-label">Sunday</p>
+          <h3 class="detail-badge-main">08<sup>th</sup></h3>
+          <p class="detail-badge-sub">November 2026</p>
+        </div>
+
+        <!-- Venue Badge -->
+        <div class="detail-badge-card">
+          <div class="detail-badge-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+            </svg>
+          </div>
+          <p class="detail-badge-label">Venue Location</p>
+          <h3 class="detail-badge-main">GREEN VALLEY</h3>
+          <p class="detail-badge-sub">Convention Centre, TB Junction, Adoor</p>
+        </div>
+
+        <!-- Nikah Time Badge -->
+        <div class="detail-badge-card">
+          <div class="detail-badge-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+          </div>
+          <p class="detail-badge-label">Ceremony Schedule</p>
+          <h3 class="detail-badge-main">NIKAH CEREMONY</h3>
+          <p class="detail-badge-sub">11:30 AM - 12:00 NOON</p>
+        </div>
+      </div>
+
+      <!-- Schedule Timeline Card -->
+      <div class="event-main-card">
+        <div class="event-schedule-header">
+          <span class="hero-eyebrow">Sacred Matrimony</span>
+          <h3>Ceremony &amp; Feast Timeline</h3>
+        </div>
+
+        <div class="event-timeline">
+          <!-- Nikah -->
+          <div class="timeline-item">
+            <div class="timeline-time-badge">11:30 AM</div>
+            <div class="timeline-content">
+              <h4>Auspicious Nikah Ceremony</h4>
+              <p>Green Valley Convention Centre, Main Grand Hall</p>
+            </div>
+          </div>
+
+          <!-- Feast -->
+          <div class="timeline-item">
+            <div class="timeline-time-badge">12:30 PM</div>
+            <div class="timeline-content">
+              <h4>Traditional Wedding Feast (Lunch)</h4>
+              <p>Dining Banquet Hall, Green Valley Convention Centre</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Save Date to Calendar Buttons -->
+        <div class="calendar-action-row">
+          <a id="btn-add-gcal" href="#" class="btn-gold-shimmer" style="padding: 0.85rem 1.8rem;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="18" height="18" x="3" y="4" rx="2" ry="2"/>
+              <line x1="16" x2="16" y1="2" y2="6"/>
+              <line x1="8" x2="8" y1="2" y2="6"/>
+              <line x1="3" x2="21" y1="10" y2="10"/>
+            </svg>
+            <span>Add to Google Calendar</span>
+          </a>
+
+          <button id="btn-add-ics" type="button" class="btn-luxury-outline">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" x2="12" y1="15" y2="3"/>
+            </svg>
+            <span>Download Apple / Outlook (.ics)</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Family Lineage Section
+         ========================================================================== -->
+    <section id="family">
+      <div class="section-header">
+        <span class="section-eyebrow">With Divine Blessings</span>
+        <h2 class="section-title">The Bride &amp; Groom</h2>
+        <div class="diamond-divider" aria-hidden="true">
+          <span class="line"></span>
+          <span class="diamond"></span>
+          <span class="line rev"></span>
+        </div>
+      </div>
+
+      <div class="family-columns">
+        <!-- Bride Card -->
+        <div class="family-side-card bride-side">
+          <span class="family-card-badge">The Beloved Bride</span>
+          <h3 class="family-person-name">Alima Rashi</h3>
+          <ul class="family-details-list">
+            <li>
+              <strong>Parents:</strong>
+              <span>Abdul Rashi A and Shemy B</span>
+            </li>
+            <li>
+              <strong>Family Residence:</strong>
+              <span>Varmathy, Nooranad, Alappuzha</span>
+            </li>
+            <li>
+              <strong>Granddaughter of:</strong>
+              <span>Late Abdul Azeez &amp; Late Subaidammal, and Adv. Basheer Rawther &amp; Nazeema Beevi</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Groom Card -->
+        <div class="family-side-card groom-side">
+          <span class="family-card-badge">The Beloved Groom</span>
+          <h3 class="family-person-name">Ashif Abdul Azeez</h3>
+          <ul class="family-details-list">
+            <li>
+              <strong>Son of:</strong>
+              <span>Late P A Abdul Azeez and Rasheedha Beevi K A</span>
+            </li>
+            <li>
+              <strong>Family Residence:</strong>
+              <span>Noor Mahal, Perumbaikad PO, Kottayam</span>
+            </li>
+            <li>
+              <strong>Blessings:</strong>
+              <span>Remembering our elders with love and prayers for an auspicious beginning</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Respectful Residence Notice from Invitation -->
+      <div class="residence-notice-card">
+        <p>
+          "We humbly inform you that there will be no function or reception of any kind at the bride's residence."
+        </p>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Venue & Location Section
+         ========================================================================== -->
+    <section id="venue">
+      <div class="section-header">
+        <span class="section-eyebrow">How to find us</span>
+        <h2 class="section-title">The Location</h2>
+        <div class="diamond-divider" aria-hidden="true">
+          <span class="line"></span>
+          <span class="diamond"></span>
+          <span class="line rev"></span>
+        </div>
+      </div>
+
+      <div class="venue-card">
+        <div class="venue-info-side">
+          <span class="venue-tag">Ceremony &amp; Reception Venue</span>
+          <h3 class="venue-title">Green Valley Convention Centre</h3>
+          <p class="venue-address">TB Junction, Adoor, Pathanamthitta District, Kerala</p>
+
+          <div class="venue-amenities">
+            <span class="venue-pill">Spacious Air-Conditioned Hall</span>
+            <span class="venue-pill">Ample Parking</span>
+            <span class="venue-pill">Convenient Access via TB Junction</span>
+          </div>
+
+          <div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Green+Valley+Convention+Centre+TB+Junction+Adoor" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="btn-gold-shimmer"
+               style="padding: 0.85rem 2rem;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              <span>Open in Google Maps</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="venue-map-side">
+          <!-- Interactive Map View -->
+          <iframe 
+            title="Green Valley Convention Centre Location" 
+            src="https://maps.google.com/maps?q=Green%20Valley%20Convention%20Centre,%20TB%20Junction,%20Adoor&t=&z=15&ie=UTF8&iwloc=&output=embed"
+            loading="lazy" 
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         RSVP Section
+         ========================================================================== -->
+    <section id="rsvp">
+      <div class="section-header">
+        <span class="section-eyebrow">Kindly Reply</span>
+        <h2 class="section-title">Will You Join Us?</h2>
+        <div class="diamond-divider" aria-hidden="true">
+          <span class="line"></span>
+          <span class="diamond"></span>
+          <span class="line rev"></span>
+        </div>
+        <p style="color: var(--color-text-muted); font-size: 1.05rem;">
+          Kindly confirm your presence so we may joyfully prepare for your arrival.
+        </p>
+      </div>
+
+      <div class="rsvp-card-wrapper">
+        <!-- RSVP Form State -->
+        <div id="rsvp-form-container">
+          <form id="rsvp-form">
+            <!-- Full Name -->
+            <div class="rsvp-form-group">
+              <label for="rsvp-name">Full Name *</label>
+              <input type="text" id="rsvp-name" class="rsvp-input" placeholder="e.g. Salim &amp; Family" required>
+            </div>
+
+            <!-- Mobile Phone with Country Code -->
+            <div class="rsvp-form-group">
+              <label for="rsvp-phone">Mobile Phone *</label>
+              <div class="phone-input-row">
+                <select id="rsvp-country" class="rsvp-select phone-country-select">
+                  <option value="+91" selected>🇮🇳 +91 (India)</option>
+                  <option value="+971">🇦🇪 +971 (UAE)</option>
+                  <option value="+966">🇸🇦 +966 (Saudi Arabia)</option>
+                  <option value="+965">🇰🇼 +965 (Kuwait)</option>
+                  <option value="+974">🇶🇦 +974 (Qatar)</option>
+                  <option value="+968">🇴🇲 +968 (Oman)</option>
+                  <option value="+973">🇧🇭 +973 (Bahrain)</option>
+                  <option value="+44">🇬🇧 +44 (UK)</option>
+                  <option value="+1">🇺🇸 +1 (USA/Canada)</option>
+                  <option value="+65">🇸🇬 +65 (Singapore)</option>
+                  <option value="+60">🇲🇾 +60 (Malaysia)</option>
+                  <option value="+61">🇦🇺 +61 (Australia)</option>
+                </select>
+                <input type="tel" id="rsvp-phone" class="rsvp-input" placeholder="Phone number" required>
+              </div>
+            </div>
+
+            <!-- Attendance Choice -->
+            <div class="rsvp-form-group">
+              <label>Will You Be Attending?</label>
+              <div class="attendance-pills">
+                <label class="attendance-pill-label">
+                  <input type="radio" name="attendance" value="attending" checked>
+                  <div class="attendance-pill-content">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M20 6 9 17l-5-5"/>
+                    </svg>
+                    <span>Joyfully Accepts</span>
+                  </div>
+                </label>
+
+                <label class="attendance-pill-label">
+                  <input type="radio" name="attendance" value="declined">
+                  <div class="attendance-pill-content">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="18" y1="6" x2="6" y2="18"/>
+                      <line x1="6" y1="6" x2="18" y2="18"/>
+                    </svg>
+                    <span>Regretfully Declines</span>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <!-- Number of Guests -->
+            <div class="rsvp-form-group">
+              <label for="guest-count">Number of Guests</label>
+              <div class="guest-stepper">
+                <button type="button" id="guest-minus" class="stepper-btn" aria-label="Decrease guest count">−</button>
+                <input type="number" id="guest-count" class="stepper-input" value="1" min="1" max="10" readonly>
+                <button type="button" id="guest-plus" class="stepper-btn" aria-label="Increase guest count">+</button>
+              </div>
+            </div>
+
+            <!-- Blessings Message -->
+            <div class="rsvp-form-group">
+              <label for="rsvp-message">Warm Wishes &amp; Blessings</label>
+              <textarea id="rsvp-message" rows="3" class="rsvp-textarea" placeholder="Share your heartfelt prayers or wishes for Alima &amp; Ashif..."></textarea>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem;">
+              <button type="submit" class="btn-gold-shimmer" style="width: 100%; max-width: 320px;">
+                <span>Send Our RSVP</span>
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- RSVP Confirmed State Card -->
+        <div id="rsvp-confirmed-container">
+          <div class="confirmed-icon-circle">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+          </div>
+          <h3 class="confirmed-title">Thank You So Much!</h3>
+          <p id="confirmed-guest-name" class="confirmed-guest-name"></p>
+          <p id="confirmed-status-text" class="confirmed-status-text"></p>
+          <button type="button" onclick="editRsvpAgain()" class="btn-luxury-outline">
+            Update RSVP Details
+          </button>
+        </div>
+
+        <!-- Host Contact Box from Invitation Card -->
+        <div class="host-contacts-card">
+          <p class="host-contacts-title">Extending a warm invitation</p>
+          <h4 class="host-name">A Muhammed Alishan</h4>
+          <div class="host-phone-links">
+            <a href="tel:+919447361154" class="phone-quick-link" title="Call Muhammed Alishan">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+              <span>+91 9447361154</span>
+            </a>
+
+            <a href="tel:+919074292061" class="phone-quick-link" title="Call Muhammed Alishan">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+              <span>+91 9074292061</span>
+            </a>
+
+            <a href="https://wa.me/919447361154?text=Heartfelt%20congratulations%20Alima%20and%20Ashif!" target="_blank" rel="noopener noreferrer" class="phone-quick-link" style="background: rgba(37, 211, 102, 0.1); border-color: rgba(37, 211, 102, 0.4); color: #1e7e34;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"/>
+              </svg>
+              <span>WhatsApp Message</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Original Printed Cards Gallery
+         ========================================================================== -->
+    <section id="original-cards">
+      <div class="section-header">
+        <span class="section-eyebrow">Keepsake Collection</span>
+        <h2 class="section-title">Original Wedding Cards</h2>
+        <div class="diamond-divider" aria-hidden="true">
+          <span class="line"></span>
+          <span class="diamond"></span>
+          <span class="line rev"></span>
+        </div>
+      </div>
+
+      <div class="cards-comparison-grid">
+        <div class="original-card-item">
+          <img src="assets/images/card_couple.png" alt="Original Couple Illustration Card" loading="lazy">
+          <div class="original-card-caption">Card 1 • The Announcement &amp; Date</div>
+        </div>
+
+        <div class="original-card-item">
+          <img src="assets/images/card_details.png" alt="Original Details and Nikah Invitation Card" loading="lazy">
+          <div class="original-card-caption">Card 2 • Nikah &amp; Family Inscription</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================================================
+       Footer
+       ========================================================================== -->
+  <footer class="luxury-footer">
+    <div class="footer-seal" aria-hidden="true">
+      <span>A&amp;A</span>
+    </div>
+    <p class="footer-tagline">Sealed with Love</p>
+    <p class="footer-date">08 . 11 . 2026</p>
+    <p class="footer-names">Alima &amp; Ashif</p>
+    <p style="font-size: 0.95rem; color: var(--color-text-muted); margin-top: 1rem;">
+      Thank you for gracing our special day with your heartfelt presence and prayers.
+    </p>
+  </footer>
+
+  <!-- ==========================================================================
+       Mobile Bottom Sticky Navigation
+       ========================================================================== -->
+  <nav class="mobile-bottom-nav" aria-label="Mobile Navigation">
+    <a href="#hero" class="active">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+      </svg>
+      <span>Home</span>
+    </a>
+    <a href="#events">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+      </svg>
+      <span>Details</span>
+    </a>
+    <a href="#venue">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+      </svg>
+      <span>Venue</span>
+    </a>
+    <a href="#rsvp">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+      </svg>
+      <span>RSVP</span>
+    </a>
+  </nav>
+
+  <!-- Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/petals.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

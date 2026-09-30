@@ -648,7 +648,7 @@ section#hero {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 30%;
+  object-position: center;
   transition: transform 1.2s ease-out;
 }
 
@@ -1203,6 +1203,15 @@ section#rsvp {
   pointer-events: none;
 }
 
+.rsvp-privacy-note {
+  max-width: 64ch;
+  margin: 1rem auto 0;
+  color: var(--color-text-muted);
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  line-height: 1.6;
+}
+
 .rsvp-form-group {
   margin-bottom: 1.6rem;
 }
@@ -1450,6 +1459,11 @@ section#original-cards {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
+}
+
+.cards-single-wrapper {
+  max-width: 520px;
+  margin: 0 auto;
 }
 
 .original-card-item {

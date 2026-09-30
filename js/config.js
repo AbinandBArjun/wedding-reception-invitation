@@ -1,6 +1,6 @@
 /**
  * Wedding Invitation Configuration - Alima & Ashif
- * Easily customize any details, dates, venues, contacts, or photos here!
+ * Primary source for event details used by the invitation's interactive features.
  */
 const WEDDING_CONFIG = {
   couple: {
@@ -26,6 +26,7 @@ const WEDDING_CONFIG = {
     title: "The Wedding Celebration of Alima & Ashif",
     dateFormatted: "Sunday, November 08, 2026",
     dateISO: "2026-11-08T11:30:00+05:30", // ISO format for countdown timer
+    endDateISO: "2026-11-08T14:00:00+05:30",
     day: "SUNDAY",
     dayNum: "08",
     month: "NOV",
@@ -40,14 +41,18 @@ const WEDDING_CONFIG = {
   },
   contacts: {
     hostName: "A Muhammed Alishan",
-    phones: ["+91 9447361154", "+91 9074292061"],
-    whatsapp: "919447361154"
+    phones: ["+91 9074292061"],
+    whatsapp: "919074292061"
   },
   assets: {
-    coupleIllustration: "assets/images/couple_illustration.png",
-    cardCouple: "assets/images/card_couple.png",
-    cardDetails: "assets/images/card_details.png"
-  }
+    coupleIllustration: "assets/images/couple_hero.jpg",
+    weddingCard: "assets/images/card_details.png"
+  },
+
+  // ─── Google Sheets RSVP Integration ────────────────────────────────────────
+  // Use the deployed Web App URL for apps-script/Code.gs. The browser can't
+  // verify delivery because the request uses no-cors; it still saves locally.
+  googleSheetUrl: "https://script.google.com/macros/s/AKfycbzAjG5ffc2m5a91kEtDTkn4Ut38XgrIp_LDucN1mAjmNFmEL1OlTduGgF_nGFppGMZMFQ/exec"
 };
 
 window.WEDDING_CONFIG = WEDDING_CONFIG;

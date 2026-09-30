@@ -72,11 +72,16 @@ function initCurtainOverlay() {
 }
 
 /**
- * Live Countdown Timer to November 08, 2026, 11:30 AM IST
+ * Live countdown to the configured event date in India Standard Time.
  */
 function initCountdown() {
-  // Target: Nov 08, 2026 11:30:00 GMT+0530 (Indian Standard Time)
-  const targetDate = new Date("2026-11-08T11:30:00+05:30").getTime();
+  const targetDate = new Date(window.WEDDING_CONFIG.event.dateISO).getTime();
+  const targetDay = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Asia/Kolkata",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit"
+  }).format(targetDate);
 
   const daysEl = document.getElementById("cd-days");
   const hoursEl = document.getElementById("cd-hours");
@@ -93,7 +98,17 @@ function initCountdown() {
       if (minutesEl) minutesEl.textContent = "00";
       if (secondsEl) secondsEl.textContent = "00";
       const statusTitle = document.getElementById("countdown-title");
-      if (statusTitle) statusTitle.textContent = "Today is the Blessed Day!";
+      if (statusTitle) {
+        const today = new Intl.DateTimeFormat("en-CA", {
+          timeZone: "Asia/Kolkata",
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit"
+        }).format(now);
+        statusTitle.textContent = today === targetDay
+          ? "Today is the Blessed Day!"
+          : "Thank You for Celebrating with Us";
+      }
       return;
     }
 
@@ -118,15 +133,19 @@ function initCountdown() {
 function initCalendarButtons() {
   const gcalBtn = document.getElementById("btn-add-gcal");
   const icsBtn = document.getElementById("btn-add-ics");
+  const config = window.WEDDING_CONFIG;
+  const event = config.event;
+  const start = new Date(event.dateISO);
+  const end = new Date(event.endDateISO);
+  const coupleNames = `${config.couple.bride.firstName} & ${config.couple.groom.firstName}`;
 
-  // Event Details
-  const title = encodeURIComponent("Nikah Wedding Ceremony: Alima & Ashif");
+  const title = encodeURIComponent(event.title);
   const details = encodeURIComponent(
-    "With great joy, you are invited to celebrate the Nikah and Wedding of Alima & Ashif at Green Valley Convention Centre, Adoor.\n\nContacts: A Muhammed Alishan (+91 9447361154, +91 9074292061)"
+    `With great joy, you are invited to celebrate the Nikah and Wedding of ${coupleNames} at ${event.venueName}, ${event.venueAddress}.\n\nContacts: ${config.contacts.hostName} (${config.contacts.phones.join(", ")})`
   );
-  const location = encodeURIComponent("Green Valley Convention Centre, TB Junction, Adoor, Kerala");
-  // 2026-11-08 11:30 AM IST (06:00 UTC) to 14:00 IST (08:30 UTC)
-  const gcalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=20261108T060000Z/20261108T083000Z&details=${details}&location=${location}`;
+  const location = encodeURIComponent(`${event.venueName}, ${event.venueAddress}`);
+  const dates = `${formatCalendarUtc(start)}/${formatCalendarUtc(end)}`;
+  const gcalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${dates}&details=${details}&location=${location}`;
 
   if (gcalBtn) {
     gcalBtn.href = gcalUrl;
@@ -137,26 +156,43 @@ function initCalendarButtons() {
   if (icsBtn) {
     icsBtn.addEventListener("click", (e) => {
       e.preventDefault();
-      downloadIcsFile();
+      downloadIcsFile(config, start, end);
     });
   }
 }
 
-function downloadIcsFile() {
+function formatCalendarUtc(date) {
+  return date.toISOString().replace(/[-:]/g, "").replace(/\.\d{3}Z$/, "Z");
+}
+
+function escapeIcsText(text) {
+  return text
+    .replace(/\\/g, "\\\\")
+    .replace(/\r?\n/g, "\\n")
+    .replace(/,/g, "\\,")
+    .replace(/;/g, "\\;");
+}
+
+function downloadIcsFile(config, start, end) {
+  const event = config.event;
+  const coupleNames = `${config.couple.bride.firstName} & ${config.couple.groom.firstName}`;
+  const eventTitle = event.title;
+  const contactDetails = `${config.contacts.hostName} (${config.contacts.phones.join(", ")})`;
+  const venue = `${event.venueName}, ${event.venueAddress}`;
   const icsData = [
     "BEGIN:VCALENDAR",
     "VERSION:2.0",
-    "PRODID:-//Alima and Ashif Wedding Invitation//EN",
+    `PRODID:-//${escapeIcsText(eventTitle)}//EN`,
     "CALSCALE:GREGORIAN",
     "METHOD:PUBLISH",
     "BEGIN:VEVENT",
-    "UID:wedding-alima-ashif-20261108@invitation",
-    "DTSTAMP:20260101T000000Z",
-    "DTSTART:20261108T060000Z",
-    "DTEND:20261108T083000Z",
-    "SUMMARY:Nikah Wedding Ceremony: Alima & Ashif",
-    "DESCRIPTION:You are cordially invited to celebrate the wedding of Alima & Ashif at Green Valley Convention Centre\\, TB Junction\\, Adoor.\\nContacts: +91 9447361154\\, +91 9074292061",
-    "LOCATION:Green Valley Convention Centre\\, TB Junction\\, Adoor\\, Kerala",
+    `UID:wedding-${formatCalendarUtc(start).slice(0, 8)}@invitation`,
+    `DTSTAMP:${formatCalendarUtc(new Date())}`,
+    `DTSTART:${formatCalendarUtc(start)}`,
+    `DTEND:${formatCalendarUtc(end)}`,
+    `SUMMARY:${escapeIcsText(eventTitle)}`,
+    `DESCRIPTION:${escapeIcsText(`You are cordially invited to celebrate the wedding of ${coupleNames} at ${venue}.\nContacts: ${contactDetails}`)}`,
+    `LOCATION:${escapeIcsText(venue)}`,
     "STATUS:CONFIRMED",
     "END:VEVENT",
     "END:VCALENDAR"
@@ -181,7 +217,6 @@ function initRsvpForm() {
   const guestMinusBtn = document.getElementById("guest-minus");
   const guestPlusBtn = document.getElementById("guest-plus");
   const guestCountInput = document.getElementById("guest-count");
-  const rsvpSuccessModal = document.getElementById("rsvp-success-toast");
 
   if (!form) return;
 
@@ -189,37 +224,44 @@ function initRsvpForm() {
   if (guestMinusBtn && guestPlusBtn && guestCountInput) {
     guestMinusBtn.addEventListener("click", () => {
       let count = parseInt(guestCountInput.value, 10) || 1;
-      if (count > 1) {
-        guestCountInput.value = count - 1;
-      }
+      if (count > 1) guestCountInput.value = count - 1;
     });
 
     guestPlusBtn.addEventListener("click", () => {
       let count = parseInt(guestCountInput.value, 10) || 1;
-      if (count < 10) {
-        guestCountInput.value = count + 1;
-      }
+      if (count < 10) guestCountInput.value = count + 1;
     });
   }
 
   // Check if previously RSVP'd
-  const savedRsvp = localStorage.getItem("alima_ashif_rsvp");
+  let savedRsvp;
+  try {
+    savedRsvp = localStorage.getItem("alima_ashif_rsvp");
+  } catch (err) {
+    console.warn("Could not read the saved RSVP from this browser:", err);
+  }
   if (savedRsvp) {
     try {
       const data = JSON.parse(savedRsvp);
-      showRsvpConfirmation(data, false);
-    } catch (e) {}
+      showRsvpConfirmation(
+        data,
+        false,
+        "This RSVP is stored in this browser. Its online delivery status is not available here."
+      );
+    } catch (err) {
+      console.warn("The saved RSVP in this browser could not be read:", err);
+    }
   }
 
-  form.addEventListener("submit", (e) => {
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    const name = document.getElementById("rsvp-name")?.value.trim() || "";
-    const country = document.getElementById("rsvp-country")?.value || "+91";
-    const phone = document.getElementById("rsvp-phone")?.value.trim() || "";
+    const name       = document.getElementById("rsvp-name")?.value.trim() || "";
+    const country    = document.getElementById("rsvp-country")?.value || "+91";
+    const phone      = document.getElementById("rsvp-phone")?.value.trim() || "";
     const attendance = form.querySelector('input[name="attendance"]:checked')?.value || "attending";
-    const guests = guestCountInput ? guestCountInput.value : "1";
-    const message = document.getElementById("rsvp-message")?.value.trim() || "";
+    const guests     = guestCountInput ? guestCountInput.value : "1";
+    const message    = document.getElementById("rsvp-message")?.value.trim() || "";
 
     if (!name || !phone) {
       alert("Please fill in your name and contact phone number.");
@@ -233,21 +275,70 @@ function initRsvpForm() {
       attendance,
       guests,
       message,
-      submittedAt: new Date().toISOString()
+      submittedAt: new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })
     };
 
-    localStorage.setItem("alima_ashif_rsvp", JSON.stringify(submission));
+    let localSaveSucceeded = false;
+    try {
+      localStorage.setItem("alima_ashif_rsvp", JSON.stringify(submission));
+      localSaveSucceeded = true;
+    } catch (err) {
+      console.warn("Could not save the RSVP in this browser:", err);
+    }
 
-    // Show celebratory confetti and confirmation card
-    showRsvpConfirmation(submission, true);
+    // --- Show loading state on the submit button ---
+    const submitBtn = form.querySelector("button[type='submit']");
+    const originalLabel = submitBtn?.innerHTML;
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = "<span>Sending…</span>";
+    }
+
+    // --- Send to Google Sheets ---
+    // NOTE: Content-Type must be "text/plain" (not "application/json") to avoid
+    // a CORS preflight request that Apps Script cannot respond to.
+    // Apps Script still receives the JSON body via e.postData.contents.
+    const SHEET_URL = window.WEDDING_CONFIG?.googleSheetUrl || "";
+    let onlineSubmissionAttempted = false;
+
+    if (SHEET_URL) {
+      try {
+        await fetch(SHEET_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "text/plain" },
+          body: JSON.stringify(submission)
+        });
+        onlineSubmissionAttempted = true;
+      } catch (err) {
+        console.warn("Google Sheets submission failed:", err);
+      }
+    }
+
+    // --- Restore button and show confirmation ---
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = originalLabel;
+    }
+
+    let deliveryNote;
+    if (onlineSubmissionAttempted) {
+      deliveryNote = `${localSaveSucceeded ? "A copy is saved in this browser. " : ""}An online submission request was sent, but this page cannot confirm that the organizers received it. For confirmation, contact ${window.WEDDING_CONFIG.contacts.hostName} at ${window.WEDDING_CONFIG.contacts.phones.join(", ")}.`;
+    } else if (localSaveSucceeded) {
+      deliveryNote = "Your RSVP is saved in this browser only and has not been sent to the organizers. Please contact them directly to confirm your reply.";
+    } else {
+      deliveryNote = `This browser could not save your RSVP, and no online submission was confirmed. Please contact ${window.WEDDING_CONFIG.contacts.hostName} at ${window.WEDDING_CONFIG.contacts.phones.join(", ")} to confirm your reply.`;
+    }
+    showRsvpConfirmation(submission, true, deliveryNote);
   });
 }
 
-function showRsvpConfirmation(data, triggerConfetti = true) {
+function showRsvpConfirmation(data, triggerConfetti = true, deliveryNote = "") {
   const formCard = document.getElementById("rsvp-form-container");
   const confirmedCard = document.getElementById("rsvp-confirmed-container");
   const confirmedName = document.getElementById("confirmed-guest-name");
   const confirmedStatus = document.getElementById("confirmed-status-text");
+  const deliveryNoteElement = document.getElementById("rsvp-delivery-note");
 
   if (!formCard || !confirmedCard) return;
 
@@ -255,6 +346,7 @@ function showRsvpConfirmation(data, triggerConfetti = true) {
   confirmedCard.style.display = "block";
 
   if (confirmedName) confirmedName.textContent = data.name;
+  if (deliveryNoteElement) deliveryNoteElement.textContent = deliveryNote;
   if (confirmedStatus) {
     if (data.attendance === "attending") {
       confirmedStatus.textContent = `Joyfully attending (${data.guests} ${parseInt(data.guests) > 1 ? "guests" : "guest"}). We eagerly look forward to seeing you!`;

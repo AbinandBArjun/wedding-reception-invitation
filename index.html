@@ -10,7 +10,7 @@
   <!-- Open Graph -->
   <meta property="og:title" content="Alima &amp; Ashif Wedding Invitation">
   <meta property="og:description" content="Join us in celebrating our wedding day on Sunday, November 08, 2026 at Green Valley Convention Centre, Adoor.">
-  <meta property="og:image" content="assets/images/couple_illustration.png">
+  <meta property="og:image" content="assets/images/couple_hero.jpg?v=3">
   <meta property="og:type" content="website">
 
   <!-- Favicon Monogram -->
@@ -149,7 +149,7 @@
         <!-- Couple Arched Portrait Frame -->
         <div class="hero-portrait-wrapper">
           <div class="portrait-arched-frame" title="Alima &amp; Ashif">
-            <img src="assets/images/couple_illustration.png" alt="Illustrated Portrait of Alima and Ashif" loading="eager">
+            <img src="assets/images/couple_hero.jpg?v=3" alt="Illustrated Portrait of Alima and Ashif" loading="eager">
             <div class="portrait-badge-overlay" aria-hidden="true">
               <span>Alima &amp; Ashif</span>
             </div>
@@ -164,7 +164,7 @@
     <section id="countdown">
       <div class="countdown-container">
         <p class="countdown-subscript">Counting down to Forever</p>
-        <h2 id="countdown-title" class="countdown-main-title">Married</h2>
+        <h2 id="countdown-title" class="countdown-main-title">Counting Down</h2>
 
         <div class="diamond-divider" aria-hidden="true">
           <span class="line" style="background: linear-gradient(90deg, transparent, rgba(216,190,132,0.9));"></span>
@@ -198,7 +198,7 @@
           </div>
         </div>
 
-        <p class="countdown-footer-date">Until Sunday, November 08, 2026 • 11:30 AM</p>
+        <p class="countdown-footer-date">Until <span data-config="event.dateFormatted">Sunday, November 08, 2026</span> • <span data-config="event.time">11:30 AM - 12:00 NOON</span></p>
       </div>
     </section>
 
@@ -355,10 +355,6 @@
               <strong>Family Residence:</strong>
               <span>Noor Mahal, Perumbaikad PO, Kottayam</span>
             </li>
-            <li>
-              <strong>Blessings:</strong>
-              <span>Remembering our elders with love and prayers for an auspicious beginning</span>
-            </li>
           </ul>
         </div>
       </div>
@@ -438,6 +434,9 @@
         </div>
         <p style="color: var(--color-text-muted); font-size: 1.05rem;">
           Kindly confirm your presence so we may joyfully prepare for your arrival.
+        </p>
+        <p class="rsvp-privacy-note">
+          When you submit, a copy of your name, phone number, attendance, guest count, and optional message is saved in this browser. If online submission is configured, a request is also sent to the organizers' RSVP sheet, but delivery cannot be verified here. This information is used to plan the celebration.
         </p>
       </div>
 
@@ -534,6 +533,7 @@
           <h3 class="confirmed-title">Thank You So Much!</h3>
           <p id="confirmed-guest-name" class="confirmed-guest-name"></p>
           <p id="confirmed-status-text" class="confirmed-status-text"></p>
+          <p id="rsvp-delivery-note" class="rsvp-privacy-note" aria-live="polite"></p>
           <button type="button" onclick="editRsvpAgain()" class="btn-luxury-outline">
             Update RSVP Details
           </button>
@@ -544,13 +544,6 @@
           <p class="host-contacts-title">Extending a warm invitation</p>
           <h4 class="host-name">A Muhammed Alishan</h4>
           <div class="host-phone-links">
-            <a href="tel:+919447361154" class="phone-quick-link" title="Call Muhammed Alishan">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-              </svg>
-              <span>+91 9447361154</span>
-            </a>
-
             <a href="tel:+919074292061" class="phone-quick-link" title="Call Muhammed Alishan">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
@@ -558,7 +551,7 @@
               <span>+91 9074292061</span>
             </a>
 
-            <a href="https://wa.me/919447361154?text=Heartfelt%20congratulations%20Alima%20and%20Ashif!" target="_blank" rel="noopener noreferrer" class="phone-quick-link" style="background: rgba(37, 211, 102, 0.1); border-color: rgba(37, 211, 102, 0.4); color: #1e7e34;">
+            <a href="https://wa.me/919074292061?text=Heartfelt%20congratulations%20Alima%20and%20Ashif!" target="_blank" rel="noopener noreferrer" class="phone-quick-link" style="background: rgba(37, 211, 102, 0.1); border-color: rgba(37, 211, 102, 0.4); color: #1e7e34;">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"/>
               </svg>
@@ -575,7 +568,7 @@
     <section id="original-cards">
       <div class="section-header">
         <span class="section-eyebrow">Keepsake Collection</span>
-        <h2 class="section-title">Original Wedding Cards</h2>
+        <h2 class="section-title">Original Wedding Card</h2>
         <div class="diamond-divider" aria-hidden="true">
           <span class="line"></span>
           <span class="diamond"></span>
@@ -583,15 +576,10 @@
         </div>
       </div>
 
-      <div class="cards-comparison-grid">
+      <div class="cards-single-wrapper">
         <div class="original-card-item">
-          <img src="assets/images/card_couple.png" alt="Original Couple Illustration Card" loading="lazy">
-          <div class="original-card-caption">Card 1 • The Announcement &amp; Date</div>
-        </div>
-
-        <div class="original-card-item">
-          <img src="assets/images/card_details.png" alt="Original Details and Nikah Invitation Card" loading="lazy">
-          <div class="original-card-caption">Card 2 • Nikah &amp; Family Inscription</div>
+          <img src="assets/images/card_details.png?v=2" alt="Original Wedding Invitation Card" loading="lazy">
+          <div class="original-card-caption">Official Printed Invitation Card</div>
         </div>
       </div>
     </section>

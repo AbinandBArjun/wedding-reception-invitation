@@ -243,11 +243,7 @@ function initRsvpForm() {
   if (savedRsvp) {
     try {
       const data = JSON.parse(savedRsvp);
-      showRsvpConfirmation(
-        data,
-        false,
-        "This RSVP is stored in this browser. Its online delivery status is not available here."
-      );
+      showRsvpConfirmation(data, false);
     } catch (err) {
       console.warn("The saved RSVP in this browser could not be read:", err);
     }

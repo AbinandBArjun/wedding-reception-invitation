@@ -14,12 +14,12 @@ class FallingPetalsEngine {
     this.height = window.innerHeight;
     this.animId = null;
 
-    // Palette of soft lavender floral petals and soft gold sparkles
+    // Palette of soft floral petals and soft gold sparkles
     this.colors = [
-      { r: 219, g: 198, b: 236, a: 0.75 }, // Soft lavender
-      { r: 238, g: 228, b: 247, a: 0.8 },  // Lilac mist
-      { r: 248, g: 242, b: 253, a: 0.7 },  // Ivory lavender
-      { r: 186, g: 151, b: 209, a: 0.65 }, // Wisteria violet
+      { r: 247, g: 223, b: 228, a: 0.75 }, // Blush rose
+      { r: 255, g: 240, b: 243, a: 0.8 },  // Soft cream pink
+      { r: 251, g: 244, b: 234, a: 0.7 },  // Ivory pearl
+      { r: 228, g: 185, b: 195, a: 0.65 }, // Mauve rose
       { r: 216, g: 190, b: 132, a: 0.55 }  // Champagne gold flake
     ];
 

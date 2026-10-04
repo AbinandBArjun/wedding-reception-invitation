@@ -137,11 +137,11 @@ function initCalendarButtons() {
   const event = config.event;
   const start = new Date(event.dateISO);
   const end = new Date(event.endDateISO);
-  const coupleNames = `${config.couple.groom.firstName} & ${config.couple.bride.firstName}`;
+  const coupleNames = `${config.couple.bride.firstName} & ${config.couple.groom.firstName}`;
 
   const title = encodeURIComponent(event.title);
   const details = encodeURIComponent(
-    `You are cordially invited to celebrate the Wedding Reception of ${coupleNames} at ${event.venueName}, ${event.venueAddress}.\n\nHost: ${config.contacts.hostName}\nContacts: ${config.contacts.phones.join(", ")}`
+    `With great joy, you are invited to celebrate the Nikah and Wedding of ${coupleNames} at ${event.venueName}, ${event.venueAddress}.\n\nContacts: ${config.contacts.hostName} (${config.contacts.phones.join(", ")})`
   );
   const location = encodeURIComponent(`${event.venueName}, ${event.venueAddress}`);
   const dates = `${formatCalendarUtc(start)}/${formatCalendarUtc(end)}`;
@@ -175,7 +175,7 @@ function escapeIcsText(text) {
 
 function downloadIcsFile(config, start, end) {
   const event = config.event;
-  const coupleNames = `${config.couple.groom.firstName} & ${config.couple.bride.firstName}`;
+  const coupleNames = `${config.couple.bride.firstName} & ${config.couple.groom.firstName}`;
   const eventTitle = event.title;
   const contactDetails = `${config.contacts.hostName} (${config.contacts.phones.join(", ")})`;
   const venue = `${event.venueName}, ${event.venueAddress}`;
@@ -186,12 +186,12 @@ function downloadIcsFile(config, start, end) {
     "CALSCALE:GREGORIAN",
     "METHOD:PUBLISH",
     "BEGIN:VEVENT",
-    `UID:reception-${formatCalendarUtc(start).slice(0, 8)}@invitation`,
+    `UID:wedding-${formatCalendarUtc(start).slice(0, 8)}@invitation`,
     `DTSTAMP:${formatCalendarUtc(new Date())}`,
     `DTSTART:${formatCalendarUtc(start)}`,
     `DTEND:${formatCalendarUtc(end)}`,
     `SUMMARY:${escapeIcsText(eventTitle)}`,
-    `DESCRIPTION:${escapeIcsText(`You and your family are cordially invited to celebrate the Wedding Reception of ${coupleNames} at ${venue}.\nContacts: ${contactDetails}`)}`,
+    `DESCRIPTION:${escapeIcsText(`You are cordially invited to celebrate the wedding of ${coupleNames} at ${venue}.\nContacts: ${contactDetails}`)}`,
     `LOCATION:${escapeIcsText(venue)}`,
     "STATUS:CONFIRMED",
     "END:VEVENT",
@@ -202,7 +202,7 @@ function downloadIcsFile(config, start, end) {
   const url = URL.createObjectURL(blob);
   const link = document.createElement("a");
   link.href = url;
-  link.setAttribute("download", "Ashif_Alima_Wedding_Reception.ics");
+  link.setAttribute("download", "Alima_Ashif_Wedding.ics");
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
@@ -370,7 +370,7 @@ window.editRsvpAgain = function() {
  * Micro Confetti Animation on RSVP Submit
  */
 function spawnCelebrationConfetti() {
-  const colors = ["#C7A24B", "#D8BE84", "#583366", "#9A6BAF", "#DBC6EC", "#FFF"];
+  const colors = ["#C7A24B", "#D8BE84", "#6E2434", "#A94A57", "#FFF"];
   const container = document.body;
 
   for (let i = 0; i < 40; i++) {

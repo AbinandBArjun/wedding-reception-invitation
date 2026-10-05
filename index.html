@@ -95,10 +95,7 @@
       <a href="#countdown">Countdown</a>
       <a href="#events">Reception</a>
       <a href="#venue">Venue</a>
-      <a href="#rsvp">RSVP</a>
     </nav>
-
-    <a href="#rsvp" class="btn-gold-shimmer header-action-btn">RSVP Now</a>
   </header>
 
   <main>
@@ -351,121 +348,10 @@
     </section>
 
     <!-- ==========================================================================
-         RSVP Section
+         Compliments & Contact Section
          ========================================================================== -->
-    <section id="rsvp">
-      <div class="section-header">
-        <span class="section-eyebrow">Kindly Reply</span>
-        <h2 class="section-title">Will You Join Us?</h2>
-        <div class="diamond-divider" aria-hidden="true">
-          <span class="line"></span>
-          <span class="diamond"></span>
-          <span class="line rev"></span>
-        </div>
-        <p style="color: var(--color-text-muted); font-size: 1.05rem;">
-          Kindly confirm your presence so we may joyfully prepare for your arrival.
-        </p>
-      </div>
-
-      <div class="rsvp-card-wrapper">
-        <!-- RSVP Form State -->
-        <div id="rsvp-form-container">
-          <form id="rsvp-form">
-            <!-- Full Name -->
-            <div class="rsvp-form-group">
-              <label for="rsvp-name">Full Name *</label>
-              <input type="text" id="rsvp-name" class="rsvp-input" placeholder="e.g. Salim &amp; Family" required>
-            </div>
-
-            <!-- Mobile Phone with Country Code -->
-            <div class="rsvp-form-group">
-              <label for="rsvp-phone">Mobile Phone *</label>
-              <div class="phone-input-row">
-                <select id="rsvp-country" class="rsvp-select phone-country-select">
-                  <option value="+91" selected>🇮🇳 +91 (India)</option>
-                  <option value="+971">🇦🇪 +971 (UAE)</option>
-                  <option value="+966">🇸🇦 +966 (Saudi Arabia)</option>
-                  <option value="+965">🇰🇼 +965 (Kuwait)</option>
-                  <option value="+974">🇶🇦 +974 (Qatar)</option>
-                  <option value="+968">🇴🇲 +968 (Oman)</option>
-                  <option value="+973">🇧🇭 +973 (Bahrain)</option>
-                  <option value="+44">🇬🇧 +44 (UK)</option>
-                  <option value="+1">🇺🇸 +1 (USA/Canada)</option>
-                  <option value="+65">🇸🇬 +65 (Singapore)</option>
-                  <option value="+60">🇲🇾 +60 (Malaysia)</option>
-                  <option value="+61">🇦🇺 +61 (Australia)</option>
-                </select>
-                <input type="tel" id="rsvp-phone" class="rsvp-input" placeholder="Phone number" required>
-              </div>
-            </div>
-
-            <!-- Attendance Choice -->
-            <div class="rsvp-form-group">
-              <label>Will You Be Attending?</label>
-              <div class="attendance-pills">
-                <label class="attendance-pill-label">
-                  <input type="radio" name="attendance" value="attending" checked>
-                  <div class="attendance-pill-content">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M20 6 9 17l-5-5"/>
-                    </svg>
-                    <span>Joyfully Accepts</span>
-                  </div>
-                </label>
-
-                <label class="attendance-pill-label">
-                  <input type="radio" name="attendance" value="declined">
-                  <div class="attendance-pill-content">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                      <line x1="18" y1="6" x2="6" y2="18"/>
-                      <line x1="6" y1="6" x2="18" y2="18"/>
-                    </svg>
-                    <span>Regretfully Declines</span>
-                  </div>
-                </label>
-              </div>
-            </div>
-
-            <!-- Number of Guests -->
-            <div class="rsvp-form-group">
-              <label for="guest-count">Number of Guests</label>
-              <div class="guest-stepper">
-                <button type="button" id="guest-minus" class="stepper-btn" aria-label="Decrease guest count">−</button>
-                <input type="number" id="guest-count" class="stepper-input" value="1" min="1" max="10" readonly>
-                <button type="button" id="guest-plus" class="stepper-btn" aria-label="Increase guest count">+</button>
-              </div>
-            </div>
-
-            <!-- Blessings Message -->
-            <div class="rsvp-form-group">
-              <label for="rsvp-message">Warm Wishes &amp; Blessings</label>
-              <textarea id="rsvp-message" rows="3" class="rsvp-textarea" placeholder="Share your heartfelt prayers or wishes for Ashif &amp; Alima..."></textarea>
-            </div>
-
-            <div style="text-align: center; margin-top: 2rem;">
-              <button type="submit" class="btn-gold-shimmer" style="width: 100%; max-width: 320px;">
-                <span>Send Our RSVP</span>
-              </button>
-            </div>
-          </form>
-        </div>
-
-        <!-- RSVP Confirmed State Card -->
-        <div id="rsvp-confirmed-container">
-          <div class="confirmed-icon-circle">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-            </svg>
-          </div>
-          <h3 class="confirmed-title">Thank You So Much!</h3>
-          <p id="confirmed-guest-name" class="confirmed-guest-name"></p>
-          <p id="confirmed-status-text" class="confirmed-status-text"></p>
-          <button type="button" onclick="editRsvpAgain()" class="btn-luxury-outline">
-            Update RSVP Details
-          </button>
-        </div>
-
-        <!-- Cheered By & Host Contact Box from Invitation Card -->
+    <section id="compliments" class="compliments-section">
+      <div class="compliments-card-wrapper">
         <div class="host-contacts-card">
           <p class="host-contacts-title">With Best Compliments &amp; Love</p>
           <h4 class="cheered-by-heading">Cheered by :</h4>
@@ -533,12 +419,6 @@
         <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
       </svg>
       <span>Venue</span>
-    </a>
-    <a href="#rsvp">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
-      </svg>
-      <span>RSVP</span>
     </a>
   </nav>
 

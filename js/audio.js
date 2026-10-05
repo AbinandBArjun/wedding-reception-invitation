@@ -12,7 +12,7 @@ class RomanticAudioEngine {
 
     // Create hidden audio element
     this.audio = document.createElement("audio");
-    this.audio.src = "Duppattawaali (From Odum Kuthira Chaadum Kuthira ).mp4";
+    this.audio.src = "WhatsApp Audio 2026-10-05 at 9.49.08 PM.mpeg";
     this.audio.preload = "auto";
     this.audio.volume = 0.4;
     this.audio.loop = true;  // native loop as fallback safety net

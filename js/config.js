@@ -47,8 +47,8 @@ const WEDDING_CONFIG = {
   ],
   contacts: {
     hostName: "Rasheedha Beevi KA & Family",
-    phones: ["+91 9847472606", "+91 7510831048"],
-    whatsapp: "919847472606"
+    phones: ["+91 7510831049"],
+    whatsapp: "917510831049"
   },
   assets: {
     coupleIllustration: "assets/images/couple_hero.jpg",

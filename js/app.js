@@ -41,8 +41,12 @@ function initCurtainOverlay() {
 
   if (!overlay || !openBtn) return;
 
-  function handleOpen() {
-    // Start audio synthesis
+  let opened = false;
+  function handleOpen(e) {
+    if (opened) return;
+    opened = true;
+
+    // Start audio immediately in direct user gesture context
     if (window.romanticAudio) {
       window.romanticAudio.play();
     }
@@ -62,11 +66,17 @@ function initCurtainOverlay() {
     }, 1800);
   }
 
+  openBtn.addEventListener("touchend", (e) => {
+    // Prevent synthetic delayed click on mobile browsers
+    e.preventDefault();
+    handleOpen(e);
+  }, { passive: false });
+
   openBtn.addEventListener("click", handleOpen);
   openBtn.addEventListener("keydown", (e) => {
     if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
-      handleOpen();
+      handleOpen(e);
     }
   });
 }

@@ -6,7 +6,7 @@ const WEDDING_CONFIG = {
   couple: {
     groom: {
       firstName: "Ashif",
-      fullName: "Ashif Abdul Azeez",
+      fullName: "Ashif",
       parents: "Late P A Abdul Azeez & Rasheedha Beevi K A",
       grandparents: "Grandson of Late PM Abdul Rahman & Late Ayisha Beevi, and Late Kallolickal Alikutty Rawther & Salma Beevi",
       role: "Beloved Son"
@@ -41,7 +41,7 @@ const WEDDING_CONFIG = {
     "Shuraif A Azeez",
     "Cashif A Azeez",
     "Fathima Jabbar",
-    "Shifana KD",
+    "Shifana KA",
     "Eshaan Rahman",
     "Zayn Malik"
   ],
